@@ -1,5 +1,44 @@
 #!/usr/bin/python
 
+import time
+
+def list_length(single_method_list):
+	start = time.time()
+	sequence = [i*10 for i in range(1, 1000)]
+
+	def findrangehigh(i):
+		try:
+			res = single_method_list.get(i)
+		except IndexError:
+			return i
+
+
+	# determine if list is less than 10
+	rangelow = rangehigh = 0
+	try: 
+		single_method_list.get(10)
+	except IndexError:
+		print "short list"
+		rangehigh = 11
+		rangelow = 1
+
+
+	if not rangehigh:
+		high = map(findrangehigh, sequence)
+		rangehigh = filter(None, high)[0]
+		low = sequence.index(rangehigh) - 1
+		rangelow = sequence[low]
+
+
+	for i in xrange(rangelow, rangehigh  + 1, 1):
+		try:
+			res = single_method_list.get(i)
+		except IndexError:
+			print i
+			end = time.time()
+			print end - start
+			break
+
 class SingleMethodList(object):
 	def get(self, index):
 		#returns the list item at index otherwise returns None
@@ -526,45 +565,5 @@ class SingleMethodList(object):
 		]
 
 		return L[index]
-
-import time
-
-def list_length(single_method_list):
-	start = time.time()
-	sequence = [i*10 for i in range(1, 1000)]
-
-	def findrangehigh(i):
-		try:
-			res = single_method_list.get(i)
-		except IndexError:
-			return i
-
-
-	# determine if list is less than 10
-	rangelow = rangehigh = 0
-	try: 
-		single_method_list.get(10)
-	except IndexError:
-		print "short list"
-		rangehigh = 11
-		rangelow = 1
-
-
-	if not rangehigh:
-		high = map(findrangehigh, sequence)
-		rangehigh = filter(None, high)[0]
-		low = sequence.index(rangehigh) - 1
-		rangelow = sequence[low]
-
-
-	for i in xrange(rangelow, rangehigh  + 1, 1):
-		try:
-			res = single_method_list.get(i)
-		except IndexError:
-			print i
-			end = time.time()
-			print end - start
-			break
-
 
 listlength = list_length(SingleMethodList())
