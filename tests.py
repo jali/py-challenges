@@ -1,34 +1,9 @@
-# frog jump
-def solution(x, y, d):
-	cntmin = 0
-	m = x
-	while(m <= y):
-		cntmin += 1
-		m += d
-		if (m >= y):
-		    break
-	
-	return cntmin
-
-#right solution
-def solution(X, Y, D):
-    distance = Y - X
-    if distance % D == 0:
-        return distance/D
-    else:
-        return distance/D + 1
-
-
-
 #q2
 def solution(A):
     N = len(A) + 1
     sum_N = (N * (N+1)) / 2
     return sum_N - sum(A)
 
-
-3 Bramley Road
-W10 6SZ London
 
     #binary = {0,b}.format(n)
 
