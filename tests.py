@@ -7,14 +7,6 @@ def solution(A):
 
     #binary = {0,b}.format(n)
 
-def hammingWeight(n):
-    result = 0
-    b = bin(n)
-    bn = list(b)
-    for i in bn:
-        if i == '1':
-            result += 1
-    return result
 
 def solution(n):
 	strbin = ('%0*d' % (32, int(bin(n)[2:])))[::-1]
